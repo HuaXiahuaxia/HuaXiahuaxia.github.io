@@ -65,8 +65,8 @@
     };
     var e = function (t) {
         this._canvas = null, this._context = null, this._sto = null, this._width = 0, this._height = 0, this._scroll = 0, this._ribbons = [], this._options = {
-            colorSaturation: "80%",
-            colorBrightness: "60%",
+            colorSaturation: "100%",
+            colorBrightness: "80%",
             colorAlpha: .65,
             colorCycleSpeed: 6,
             verticalPosition: "center",

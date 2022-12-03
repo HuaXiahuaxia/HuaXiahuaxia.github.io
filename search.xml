@@ -4,11 +4,36 @@
   
     
     <entry>
+      <title>快速排序</title>
+      <link href="/2022/12/03/11306.html"/>
+      <url>/2022/12/03/11306.html</url>
+      
+        <content type="html"><![CDATA[<h1 id="快排"><a href="#快排" class="headerlink" title="快排"></a>快排</h1><h3 id="快排思想"><a href="#快排思想" class="headerlink" title="快排思想"></a><font color=red>快排思想</font></h3><ol><li>在待排序序列中任意取出一个值，使在它左边的数都小于等于它，在它右边的数都大于等于它。  </li><li>对所有左侧的序列进行重复的操作，对右边也是一样。  </li><li>递归退出条件：当R&#x3D;&#x3D;L时此时一定有序，return。</li></ol><h3 id="快排板子"><a href="#快排板子" class="headerlink" title="快排板子"></a><font color=purple>快排板子</font></h3><pre><code>#include&lt;iostream&gt;using namespace std;const int N=1e5+10;int a[N];void speed_sort(int L,int R)&#123;    if(L&gt;=R)return;    int x=a[L+R&gt;&gt;1];    int i=L-1,j=R+1;    while(i&lt;j)&#123;        do(i++);while(a[i]&lt;x);        do(j--);while(a[j]&gt;x);        if(i&lt;j)&#123;            swap(a[i],a[j]);        &#125;    &#125;    speed_sort(L,j);    speed_sort(j+1,R);&#125;int main()&#123;    int n;    cin&gt;&gt;n;    for(int i=1;i&lt;=n;i++)&#123;        cin&gt;&gt;a[i];    &#125;    speed_sort(1,n);    for(int i=1;i&lt;=n;i++)&#123;        cout&lt;&lt;a[i]&lt;&lt;&quot; &quot;;    &#125;    return 0;&#125;</code></pre>]]></content>
+      
+      
+      <categories>
+          
+          <category> 基础算法 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 基础算法 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>Hello World</title>
       <link href="/2022/12/01/16107.html"/>
       <url>/2022/12/01/16107.html</url>
       
-        <content type="html"><![CDATA[<p>Welcome to <a href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p><h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/writing.html">Writing</a></p><h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/server.html">Server</a></p><h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/generating.html">Generating</a></p><h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>]]></content>
+        <content type="html"><![CDATA[<p>Welcome to <a href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p><h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><pre class=" language-bash"><code class="language-bash">$ hexo new <span class="token string">"My New Post"</span></code></pre><p>More info: <a href="https://hexo.io/docs/writing.html">Writing</a></p><h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><pre class=" language-bash"><code class="language-bash">$ hexo server</code></pre><p>More info: <a href="https://hexo.io/docs/server.html">Server</a></p><h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><pre class=" language-bash"><code class="language-bash">$ hexo generate</code></pre><p>More info: <a href="https://hexo.io/docs/generating.html">Generating</a></p><h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><pre class=" language-bash"><code class="language-bash">$ hexo deploy</code></pre><p>More info: <a href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>]]></content>
       
       
       
