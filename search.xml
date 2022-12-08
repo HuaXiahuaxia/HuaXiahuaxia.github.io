@@ -4,6 +4,31 @@
   
     
     <entry>
+      <title>基础数论</title>
+      <link href="/2022/12/08/26496.html"/>
+      <url>/2022/12/08/26496.html</url>
+      
+        <content type="html"><![CDATA[<h2 id="筛质数"><a href="#筛质数" class="headerlink" title="筛质数"></a>筛质数</h2><h3 id="埃氏筛"><a href="#埃氏筛" class="headerlink" title="埃氏筛"></a>埃氏筛</h3><ol><li>任何数均能被他的质因子筛去。</li></ol><h3 id="线性筛"><a href="#线性筛" class="headerlink" title="线性筛"></a>线性筛</h3><ol><li>任何数均能被他的最小质因子筛去。</li></ol><hr><h2 id="约数"><a href="#约数" class="headerlink" title="约数"></a>约数</h2><h3 id="表达方式"><a href="#表达方式" class="headerlink" title="表达方式"></a>表达方式</h3><ol><li>N&#x3D;${p_1}^{a_1}\times{p_1}^{a_1}\times{p_1}^{a_1}\cdots\times{p_n}^{a_n}$这里$p_i$表示N的质因子，$a_i$表示质因子个数。  </li><li>任何数都可以表示成他的质因数乘积</li></ol><h3 id="约数个数"><a href="#约数个数" class="headerlink" title="约数个数"></a>约数个数</h3><ol><li>即质因子的排列组合，有${a_1+1}\times{a_2+1}\times\cdots\times{a_n+1}$种可能，由于是质因子的排列组合，不可能存在有重复答案的排列。</li></ol><h3 id="约数和"><a href="#约数和" class="headerlink" title="约数和"></a>约数和</h3><ol><li>即各排列组合的约数之和，有sum&#x3D;${p_1^0+p_1^1+\cdots+p_1^{a_1}}+{p_2^0+p_2^1+\cdots+p_2^{a_2}}+\cdots$。</li></ol><hr><h2 id="最大公约数"><a href="#最大公约数" class="headerlink" title="最大公约数"></a>最大公约数</h2><h3 id="板子"><a href="#板子" class="headerlink" title="板子"></a>板子</h3><pre><code>int gcd(int a,int b)&#123;    return b==0?a:gcd(b,a%b);&#125;</code></pre><hr><h2 id="欧拉函数"><a href="#欧拉函数" class="headerlink" title="欧拉函数"></a>欧拉函数</h2><h3 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h3><ol><li>phi[n]表示1到n中与n互质的数个数。</li></ol><h3 id="理解"><a href="#理解" class="headerlink" title="理解"></a>理解</h3><ol><li>容斥原理，N&#x3D;${p_1}^{a_1}\times{p_1}^{a_1}\times{p_1}^{a_1}\cdots\times{p_n}^{a_n}$，有N&#x2F;$p_1$个合数，N&#x2F;$p_2$个合数….,这些都要减去，即N-N&#x2F;$p_1$-N&#x2F;$p_2$….，对于N&#x2F;($p_i<em>p_j$)这些数都被重复减去，需要加回来，同理N&#x2F;($p_i</em>p_j*p_k$)需要减去，以此类推。</li><li>答案ans&#x3D;$N\times{(1-1\div p_1)}\times{(1-1\div p_2)}\times\cdots {(1-1\div p_n)}$。</li></ol><h3 id="欧拉定理"><a href="#欧拉定理" class="headerlink" title="欧拉定理"></a>欧拉定理</h3><ol><li>$a^{phi[n]}$%n&#x3D;&#x3D;1，即同余1模n。</li></ol><hr><h2 id="快速幂"><a href="#快速幂" class="headerlink" title="快速幂"></a>快速幂</h2><h3 id="理解-1"><a href="#理解-1" class="headerlink" title="理解"></a>理解</h3><ol><li>11的二进制表示：1011，则$2^{11}$&#x3D;$2^1\times2^2\times2^8$。</li></ol><h3 id="板子-1"><a href="#板子-1" class="headerlink" title="板子"></a>板子</h3><pre><code>void speed_pow(int a,int b,int p)&#123;    long long ans=1,sum=a;    while(b)&#123;        if(b&amp;1)ans=(ans%p*sum)%p;        b&gt;&gt;=1;        sum=sum%p*sum%p;    &#125;    cout&lt;&lt;ans&lt;&lt;endl;    return;&#125;</code></pre><hr><h2 id="扩展欧几里得算法"><a href="#扩展欧几里得算法" class="headerlink" title="扩展欧几里得算法"></a>扩展欧几里得算法</h2><h3 id="前置知识"><a href="#前置知识" class="headerlink" title="前置知识"></a>前置知识</h3><h4 id="乘法逆元"><a href="#乘法逆元" class="headerlink" title="乘法逆元"></a>乘法逆元</h4><ol><li>乘法逆元：$x\times x^{-1}\equiv $ 1(%m)，这里 $x^{-1}$即x的逆元，x与m必须互质才存在逆元。</li><li>证明x与m必须互质：<br>证：假设不互质则有gcd(a,m)&gt;1，令b&#x3D;$a^{-1}$,有a<em>b&#x3D;q</em>m+1;有ab-qm&#x3D;1;因为a,m,有最大公因子大于1，但是右侧1没有大于1的因子，因此与假设矛盾，故x与m必须要互质才存在逆元。</li></ol><h4 id="裴蜀定理"><a href="#裴蜀定理" class="headerlink" title="裴蜀定理"></a>裴蜀定理</h4><ol><li>对于任意正整数a,b,一定存在整数x,y,使得ax+by&#x3D;gcd(a,b)。</li></ol><h3 id="理解-2"><a href="#理解-2" class="headerlink" title="理解"></a>理解</h3><ol><li>使用欧几里得算法的同时可以通过回溯得到ax+by&#x3D;gcd(a,b)的一组x,y解。</li></ol><h2 id="中国剩余定理"><a href="#中国剩余定理" class="headerlink" title="中国剩余定理"></a>中国剩余定理</h2><h3 id="定义-1"><a href="#定义-1" class="headerlink" title="定义"></a>定义</h3><ol><li>x $\equiv a_1(mod m_1)$，x $\equiv a_1(mod m_1)$，x $\equiv a_1(mod m_1)$…..，x $\equiv a_n(mod m_n)$，令M&#x3D;m1<em>m2</em>…mn，则有 $M_i$&#x3D;M&#x2F;$m_i$，则x&#x3D;$a_1<em>M_1</em>M_1^{-1}$+$a_2<em>M_2</em>M_2^{-1}$+$\cdots$+$a_n<em>M_n</em>M_n^{-1}$。（前提逆元存在，即$m_i$两两互质）</li></ol><h3 id="扩展中国剩余定理"><a href="#扩展中国剩余定理" class="headerlink" title="扩展中国剩余定理"></a>扩展中国剩余定理</h3><ol><li>不保证$m_i$两两互质，若有n个同余式，则每两个可以合并成一个同余式，这样n个同余式最后只会剩一个，这个即为答案。</li></ol>]]></content>
+      
+      
+      <categories>
+          
+          <category> 算法基础 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 算法基础 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>图论</title>
       <link href="/2022/12/05/9770.html"/>
       <url>/2022/12/05/9770.html</url>
